@@ -1,0 +1,98 @@
+Types of Constructors in C#  
+  There are five types of constructors available in C#, they are as follows
+  1) Default or Parameter Less Constructor
+  2) Parameterized Constructor
+  3) Copy Constructor
+  4) Static Constructor
+  5) Private Constructor
+  Let’s discuss each of these constructors in detail with examples.
+
+  Default or Parameterless Constructors in C#
+    Default or Parameterless Constructors in C#
+    If a constructor method does not take any parameters, then we call that a Default or Parameter Less Constructor. These constructors can be defined by a programmer explicitly or else will
+    be defined implicitly provided there is no explicit constructor under the class. So, the Default or Parameterless Constructors are again classified into two types. They are as follows:
+    1) System-Defined Default Constructor
+    2) User-Defined Default Constructor
+
+  What is System Defined Default or Parameterless Constructor in C#?
+    As a programmer, if we are not defined any constructor explicitly in our program, then by default the compiler will provide one constructor at the time of compilation. That constructor
+    is called a default constructor and the default constructor is parameterless. The default constructor will assign default values to the data members (non-static variables).
+    As this constructor is created by the system this is also called a system-defined default constructor.
+
+  When do we need to provide the Constructor Explicitly?
+    If we want to execute some custom logic at the time of object creation, that logic may be object initialization logic or some other useful logic, then as a developer, we must provide
+    the constructor explicitly in C#.
+
+  What is a User-Defined Default Constructor in C#?
+    The constructor which is defined by the user without any parameter is called the user-defined default constructor. This constructor does not accept any argument but as part of the
+    constructor body, you can write your own logic.
+
+  When should we define a parameterized constructor in a class?
+    If we want to initialize the object dynamically with the user-given values or if we want to initialize each instance of a class with a different set of values then we need to use the 
+    Parameterized Constructor in C#. The advantage is that we can initialize each instance with different values.
+
+  What is Parameterized Constructor in C#?
+    If a constructor method is defined with parameters, we call it a Parameterized Constructor in C#, and these constructors are defined by the programmers only but never can be defined 
+    implicitly. So, in simple words, we can say that the developer-given constructor with parameters is called Parameterized Constructor in C#.
+
+  When should we use Parameterized Constructor in C#?
+    With the help of a Parameterized constructor, we can initialize each instance of the class with a different set of values. That means using parameterized constructor we can store a 
+    different set of values in different instances created in the class.
+
+  Copy Constructor in C#:
+    If we want to create multiple instances with the same values then we need to use the copy constructor in C#, in a copy constructor the constructor takes the same class as a parameter to it.
+
+  How many Constructors can be Defined in a Class in C#?
+    In C#, within a class, we can define any number of constructors. But the most important point that you need to remember is that each and every constructor must have a different signature.
+    A different signature means the number, type, and parameter order should be different. So, in a class, we can define one no-argument constructor plus ‘n’ number of parameterized constructors in C#.
+
+  Static Constructor in C#
+    In C#, it is also possible to create a constructor as static and when we do so, it is called a Static Constructor. If a constructor is declared explicitly by using the static modifier,
+    then it is called a static constructor in C#. All the constructors we defined till now are non-static or instance constructors.
+    In a static constructor, you cannot use any access specifiers like public, private, and protected.
+    But, when you will compile the above, the compiler will provide the default parameter less constructor.
+
+  Points to Remember while working with Static Constructors in C#:
+    Point1:
+    If a class contains any static variables, then only implicit static constructors come into the picture otherwise we must be defined them explicitly. On the other hand, non-static
+    constructors will be implicitly defined in every class (except the static class) provided we didn’t define any constructor explicitly.
+
+    Point2:
+    Static Constructors are responsible for initializing static variables and these constructors are never called explicitly. They are called Implicitly and moreover, these constructors
+    are the first to execute in any class.
+    The non-static constructors are never called implicitly, they are always called explicitly whereas the static constructor never called explicitly, they are always going to be called 
+    implicitly. How does the execution happen? See, the Main method is the starting point of execution, and in this case no difference. The program execution will start from the Main method
+    but before executing any statement inside the Main method, it will first execute the Static constructor and once the Static Constructor execution is completed, then it will continue the
+    execution of the Main method. So, the static constructor is the first block of code in a class to be executed.
+
+    Point3:
+    Static Constructors cannot be parameterized, so overloading of the static constructors is not possible in C#. Now, the question is why we cannot parameterize the static constructor? 
+    The answer is simple. The static constructors are executed implicitly and hence we never get a chance to pass a value. And as the static constrictor is the first block to be executed
+    in a class, and hence there is no chance to pass a value.
+
+  Points To Remember About Static Constructor in C#:
+    1) There can be only one static constructor in a class.
+    2) It can’t be called explicitly, it is always called implicitly.
+    3) The static constructor should be without any parameters.
+    4) It can only access the static members of the class.
+    5) There should not be any access specifiers in the static constructor definition.
+    6) If a class is static then we cannot create the object for the static class.
+    7) It is called automatically to initialize the static members.
+    8) Static constructor will be invoked only once i.e. at the time of class loading.
+
+  Can we initialize non-static data members within a static constructor in C#?
+    It is not possible to initialize non-static data members within a static constructor, it will raises a compilation error.
+
+  Can we initialize static data fields within a non-static constructor in C#?
+    Yes, we can initialize static data members within a non-static constructor.
+
+  What is a Private Constructor in C#?
+    In C#, it is also possible to create a constructor as private. The constructor whose accessibility is private is known as a private constructor. When a class contains a private constructor
+    then we cannot create an object for the class outside of the class. So, private constructors are used to create an object for the class within the same class. Generally, private constructors 
+    are used in the Remoting concept.
+
+  Points To Remember about C# Private Constructor:
+    1) Using Private Constructor in C# we can implement the singleton design pattern.
+    2) We need to use the private constructor in C# when the class contains only static members.
+    3) Using a private constructor is not possible to create an instance from outside the class.
+  
