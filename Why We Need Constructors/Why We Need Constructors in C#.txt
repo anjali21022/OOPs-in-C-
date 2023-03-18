@@ -1,0 +1,13 @@
+Why We Need Constructors in C#
+  Why do we need Constructors in C#?
+    Every class requires a constructor to be present in it if we want to create the instance of that class. Every class contains an implicit constructor if not defined explicitly by the 
+    programmer and with the help of that implicit constructor, we can create the instance of that class.
+    If we don’t define any constructors, then an implicit constructor is there which is provided by the compiler at the time of compilation and using that implicit constructor we can create
+    the instance, then the question is why do we need to define the constructor explicitly again or when do we need to define an explicit constructor in C#?
+
+  What is the need of Defining a Constructor Explicitly Again?
+    This is one of the frequently asked interview questions. Let us understand this. Implicit Constructors of a class will initialize variables of a class with the same value even if we create
+    multiple instances of that class.
+
+  
+  
