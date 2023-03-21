@@ -1,0 +1,55 @@
+Private Constructors in C#
+  What is a Private Constructor in C#?
+    In C#, when the constructor is created by using the Private Access Specifier, then it is called a Private Constructor. When a class contains a private constructor and if the class does
+    not have any other Public Constructors, then you cannot create an object for the class outside of the class. But we can create objects for the class within the same class. 
+    So, the most important point that we need to keep in mind is that the restrictions such as restrictions for creating objects, restrictions for accessing members, etc. will come into the
+    picture when you are trying to create the objects and accessing the members from outside the class. If you are creating the objects and accessing the members within the same class, then
+    no such restrictions come into the picture.
+
+  Creating Object using Private Constructor within the same class in C#:
+    Many articles on the web say that you cannot create an instance of the class if it has a private constructor. But this is partially true. You cannot create an instance from outside the
+    class, but you can create the instance from within the class. 
+
+  Creating an Instance from Outside the Class in C#:
+    The point that you need to remember is while creating the instance from outside the class, the class should have a public constructor. It does not matter if a class has a private 
+    constructor or not, but if a class has a public constructor, then using that public constructor, we can create the class instance and invoke the public non-static members.
+
+  Use Case: The use case of Private Constructor in C# is that if you don’t want your class to be instantiated from outside the class, then add a private constructor without any public
+            constructor in your class.
+
+  Private Constructor Restricting Inheritance in C#:
+    On many websites, you will find that they are saying Private Constructor Restricting Inheritance in C#. That means if you have a private constructor in a class, then that class 
+    cannot be inherited. This is also partially true. Let us prove this point with a few examples.
+    See, if your class has a private constructor as well as any other public constructor, then it is possible to inherit your class. What the child class requires to establish a parent-child
+    relationship is a publicly accessible constructor. That means it does not matter whether your class has any private constructor or not, if it has a public constructor, then you can inherit
+    the class.
+
+  Use Private Constructor when your class has only Static Members in C#:
+    On the Internet, you will find that many peoples or articles are saying that, if your class contains only static members, then make the class constructor private. But this is wrong.
+    I have already shown you that even if you have a private constructor then we can also make inheritance with inner classes and we can also create instances within the same class.
+    See, the constructors either private or public are used to create the instances and initialize the non-static variables of a class. If your class does not have any non-static members,
+    then is there any requirement for a constructor? The answer is No. If your class contains only static members, then it is better to make the class static which not only restricts your
+    class instance to be created but also it will restrict inheritance.
+
+  Is Private Constructor going to be Parameterless in C#?
+    Again, in many articles and YouTube videos, you will see that many peoples are saying private constructors should be parameterless. But this is not true. See, in C#, constructors are
+    overloaded. That means we can define multiple constructors with different parameters. In overloading what is important is the name and the parameters and it does not consider 
+    access specifiers like private, public, protected, etc as part of the overloading. So, it is possible to define multiple private constructors in C#.
+
+  When to use Private Constructors in C#?
+    On Internet, you will find many articles and many peoples are saying that a private constructor is used to implement Singleton Design Pattern. Yes, absolutely right. One of the use
+    cases of the private constructors is to implement a singleton design pattern. Let us see how to implement a singleton design pattern using a private constructor in C#.
+
+  What is Singleton Pattern in C#?
+    The Singleton Design Pattern ensures that only one instance of a particular class is going to be created and then provide simple global access to that instance for the entire application.
+
+  How to Implement Singleton Design Pattern in C#?
+    The following are the steps to implement the Singleton Design Pattern in C#.
+    1) You need to declare only a single constructor in your class and that constructor should be private and parameterless. This is required because it is not allowed the class to be 
+       instantiated from outside the class. It only instantiates from within the class.
+    2) The class should be declared sealed which will ensure that it cannot be inherited.
+    3) You need to create a private static variable that is going to hold a reference to the single created instance of the class.
+    4) You also need to create a public static property/method which will return the single-created instance of the singleton class. This method or property first checks if an instance of
+       the singleton class is available or not. If the singleton instance is available, then it returns that singleton instance otherwise it will create an instance and then return that instance.
+
+  
