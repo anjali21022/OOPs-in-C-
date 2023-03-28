@@ -1,0 +1,72 @@
+Garbage Collection in C#.NET
+  What is Garbage Collection in .NET Framework?
+    When a dot net application runs, lots of objects are created. At a given point in time, it is possible that some of those objects are not used by the application. Garbage Collector in
+    .NET Framework is nothing but a Small Routine or you can say it’s a Background Process Thread that runs periodically and try to identify what objects are not being used currently by the 
+    application and de-allocates the memory of those objects.
+    So, Garbage Collector is nothing but, it is a feature provided by CLR which helps us to clean or destroy unused managed objects. Cleaning or destroying those unused managed objects 
+    basically reclaim the memory.
+    Note: The Garbage Collector will destroy only the unused managed objects. It does not clean unmanaged objects. 
+
+  Managed and Unmanaged objects in .NET Framework:
+    Let us understand Managed and Unmanaged objects. Whenever we create any EXE (i.e. console application, windows application, etc.) or web application (i.e. ASP.NET MVC, Web API, ASP.NET, 
+    Class Library, etc.) in .NET Framework using visual studio and using any .NET supported programming language such as C#, VB, F#, etc., then these applications are run completely under the
+    control of CLR (Common Language Runtime). That means, if your applications have unused objects, then CLR will clean those objects using Garbage Collector.
+    Now, let’s say, you have also used other third-party EXE in your .NET application like Skype, PowerPoint, Microsoft Excel, etc. These “EXEs” are not made in dot net, they are made using
+    some other programming languages such as C, C++, Java, etc.
+    When you use these “EXEs” in your application, then these are not run by CLR. Even though you are running these “EXE” in dot net applications, they are going to run under their own environment.
+    For example, if one EXE is developed using C or C++, then that EXE will run under the C or C++ runtime environment. In the same line, if the EXE is created using VB6, then it is going to run
+    under the VB6 runtime environment.
+
+  What Exactly is the Managed and Unmanaged Code in .NET?
+    The codes which run under the complete control of CLR are called Managed Code in .NET Framework. These kinds of code (Managed code in C#) are run by a dot net runtime environment.
+    If the dot net framework is not installed or if dot net runtime is not available, then these kinds of codes are not going to be executed. CLR will provide all the facilities and features of 
+    .NET to the managed code execution like Language Interoperability, Automatic Memory Management, Exception Handling Mechanism, Code Access Security, etc.
+    On the other hand, Skype, PowerPoint, and Microsoft Excel do not require dot net runtime, they run under their own environment. So, in short, the code (EXE, Web App) which not run under the
+    control of CLR is called unmanaged code in .NET. CLR will not provide any facilities and features of .NET to the unmanaged code in C# execution like Language Interoperability, 
+    Automatic memory management, Exception handling mechanism, code access security, etc.
+
+  Garbage Collection Generations in C#.NET:
+    Let us understand what Garbage Collector Generations are and how does it affect Garbage Collection performance. There are three generations. They are Generation 0, Generation 1, and Generation 2.
+
+  Understanding Generation 0, 1, and 2:
+    Let’s say you have a simple application called App1. As soon as the application starts it creates 5 managed objects. Whenever any new objects (fresh objects) are created, they are moved into a
+    bucket called Generation 0.
+    We know our hero Mr. Garbage Collector runs continuously as a background process thread to check whether there are any unused managed objects so that it reclaims the memory by cleaning those objects. 
+    Now, let’s say two objects (Object1 and Object2) are not needed by the application. So, Garbage Collector will destroy these two objects (Object1 and Object2) and reclaims the memory from
+    Generation 0 bucket. But the remaining three objects (Object3, Object4, and Object5) are still needed by the application. So, the Garbage collector will not clean those three objects. What Garbage
+    Collector will do is, he will move those three managed objects (Object3, Object4, and Object5) to Generation 1 bucket.
+    Now, let’s say your application creates two more fresh objects (Object6 and Object7). As fresh objects, they should be created in Generation 0 bucket
+    Now, again Garbage Collector runs and it comes to Generation 0 bucket and checks which objects are used. Let’s say both objects (Object6 and Object7) are unused by the application, so it will remove
+    both objects and reclaims the memory. Now, it goes to the Generation 1 bucket, and checks which objects are unused. Let’s say Object4 and Object5 are still needed by the application while object3 is
+    not needed. So, what Garbage Collector will do is, it will destroy Object3 and reclaims the memory as well as will move Object4 and Object5 to Generation 2 bucket.
+
+  What are Generations?
+    Generations are nothing but, will define how long the objects are staying in the memory. Now the question that should come to your mind is why do we need Generations? Why do we have three different
+    kinds of generations?
+
+  Why do we need Generations?
+    Normally, when we are working with big applications, they can create thousands of objects. So, for each of these objects, if the garbage collector goes and checks if they are needed or not, it’s 
+    really painful or it’s a bulky process. By creating such generations what does it mean if an object in Generation 2 buckets means the Garbage Collector will do fewer visits to this bucket? 
+    The reason is that if an object moves to Generation 2, it means it will stay more time in the memory. It’s no point going and checking them again and again.
+    So, in simple words, we can say that Generations 0, 1, and 2 will helps to increase the performance of the Garbage Collector. The more the objects in Gen 0, the better the performance and the more
+    the memory will be utilized in an optimal manner.
+    Note: To give better clarity about the generations we are going to use a tool called .NET Memory Profiler. Now, I will show you how to download, install and use .NET Memory Profiler with C# Console
+          Application to check and see how the objects are created in the different generations of Garbage Collector.
+
+  What is .NET Memory Profiler?
+    .NET Memory Profiler is a powerful tool for finding memory leaks and optimizing the memory usage in programs written in C#, VB.NET, or any other .NET Language. With the help of the profiling guides,
+    the automatic memory analyzer, and specialized trackers, you can make sure that your program has no memory or resource leaks, and that the memory usage is as optimal as possible.
+
+  How do using a Destructor in a Class end up in a Double Garbage Collector Loop?
+    As we already discussed garbage collectors will only clean up the managed code. In other words, for any kind of unmanaged code, for those codes to clean up has to be provided by unmanaged code,
+    and the garbage collector does not have any control over them to clean up the memory.
+    For example, let’s say you have a class called MyClass in VB6, then you have to expose some function let’s say CleanUp() and in that function, you have to write the logic to clean up the unmanaged code.
+    From your dot net code, you simply need to call that method (CleanUp()) to initiate the clean-up.
+    The location from where you would like to call the Clean-Up is the destructor of a class. This looks to be the best place to write the clean-up code. But, there is a big problem associated with it when you
+    write clean-up in a destructor. Let us understand what the problem is.
+    When you define a destructor in your class, the Garbage Collector before destroying the object, will go and ask the question to class, do you have a destructor, if you have a destructor, then move the
+    object to the next generation bucket. In other words, it will not clean up the object having a destructor at that moment itself even though it is not used. So, it will wait for the destructor to run,
+    and then it will go and clean up the object. Because of this, you will find more objects in generation 1 and Generation 2 as compared to Generation 0.
+
+  
+
