@@ -1,0 +1,83 @@
+Inheritance in C#
+  What is Inheritance in C#?
+    Inheritance in C# is a mechanism of consuming the members that are defined in one class from another class. See, we are aware that a class is a collection of members. And the members defined in one class can be consumed from 
+    another class by establishing a parent/child relationship between the classes.
+    Generally, all of us know one thing that all of our parent properties belong to us. So, children get rights on the Parent’s property. Why, because this is a law. According to the law, all the properties of parents belong to
+    their children.
+    Exactly the same principle is applied in inheritance. Suppose, I have a class (A) with a set of members and I want the same members in another class (B). One way to do this is, I need to copy and paste the same code from class A 
+    into class B. But if we copy and paste the code, then it is called rewriting the code. Rewriting the code has an impact on the size of the application. If the size of the application grows, ultimately it will affect the
+    performance of the application.
+    So, if you want to overcome that rewriting process, and reuse the code, the best option that is available for us is Inheritance in C#. Simply. what we need to do is, established a Relation between the two classes. What 
+    relation? Parent/Child relation. Once you established the parent/child relationship, then all the members of the parent class (A) can be consumed under the child class (B). 
+    So, Inheritance in C# is a mechanism of consuming the members of one class in another class by establishing a parent/child relationship between the classes which provides re-usability.
+
+  How to Implement Inheritance in C#?
+    To Implement Inheritance in C#, we need to establish a Parent/Child relationship between classes. Let us understand how to establish a Parent/Child relationship in C#. Suppose we have a class called A with a set of members. 
+    And we have another class B and we want this class B to be inherited from class A. The following code shows how to establish the Parent-Child relationship between class A and Class B.
+    class A 
+    {
+      //members
+    }
+    Class B : A
+    {
+      //Consuming the members of A from here
+    }
+    So, this is the basic process for establishing a Parent/Child relationship in C#. Now, let us see the basic syntax to establish a Parent/Child relationship between classes. The syntax is given below.
+    [<modifiers>] class <child class> : <parent class>
+    Here, the terminology Parent class and Child Class can also be called Base Class (Superclass) and Derived Class (Subclass). So, in our example,
+    A => Parent/ Base/ Superclass (all are meaning the same; you can use any term)
+    B => Child/ Derived/ Subclass (all are meaning the same; you can use any term)
+    Note: In Inheritance, the Child class can consume members of its Parent class as if it is the owner of those members (expect private members of the parent).
+
+  Why Child Cannot Consume Private Members of Parent?
+    Generally, Children have rights to their Parent’s Property. As a Child, tomorrow I can take over my father’s business. I can take over my Father’s Properties (Car, Buildings, Money, whatever it is). But I cannot take over my 
+    father’s job. The reason is the Job whatever my father is doing may be based on his qualifications and his experiences. And tomorrow I cannot take over his particular job. So, the Job is completely private to my father. And that
+    is not inherited to me. But remain everything, business, money, properties, whatever I will take. Take over everything except the private members.
+    The same principle is also applied to Inheritance. So, the child class will consume all the members of the Parent class except the private members.
+
+  When you are working with Inheritance 6 things or rules are required to learn and remember. Let us learn those 6 important Rules one by one.
+    Rule1:
+      In C#, the parent classes constructor must be accessible to the child class, otherwise, the inheritance would not be possible because when we create the child class object first it goes and calls the parent class constructor 
+      so that the parent class variable will be initialized and we can consume them under the child class.
+        Why is Parent Class Constructor Accessible to Child Class?
+          The reason is when the Parent class constructor is called, then only the parent class members will be initialized, and then only they can be consumed under the child class. If the parent class members are not
+          initialized then you cannot consume them under the child class. If you want to consume them in the child class, they must be initialized. See, Child Class is dependent on Parent Class, so the Parent class must be 
+          initialized first, then only the consumption is possible in the child class.
+          This is the first rule of Inheritance. Let us proceed and understand the second rule of Inheritance in C# with examples.
+
+    Rule2:
+      In inheritance, the child class can access the parent class members but the parent classes can never access any members that are purely defined in the child class.
+      See, according to law, children have rights to their Parent’s Property. But the Parent does not have rights to the Children’s property. It is only the children’s responsibility to take care of their parents. But legally,
+      the Parent does not have rights to the child’s property. Exactly, in the same way, the Parent class can never access the child class members which are purely defined in the child class.
+
+    Rule3:
+      We can Initialize a Parent class variable by using the child class instance to make it a reference variable so that the reference will be consuming the memory of the child class instance. But in this case, also, we cannot 
+      call any pure child class members using the reference.
+      Now, you may have one question, what is a reference? The answer is a Reference is a pointer to an instance that does not have any memory allocation.
+        So, what is a Reference in C#?
+          References of a class will not have any memory allocation. They will be consuming the memory of the instance that is assigned to initialize them.
+          Note: The point that you need to remember is memory allocation is done for instances, not for references in C#. References are just pointers to instances.
+
+    Rule4:
+      Every class that is defined by us or predefined in the libraries of the language has a default parent class i.e. Object class of the System namespace, so the members (Equals, GetHashCode, GetType, and ToString) of the
+      Object class are accessible from anywhere.
+      Generally, when we defined a class, we think that we did not inherit it from any class. But by default, our class is Inherited from the Object class. So, Object is the parent class for all the classes defined in our Base
+      Class Library as well as all the classes that we defined in our application.
+      Because Object is the parent class, four important methods (Equals, GetHashCode, GetType, and ToString) of the Object class can be called or accessed from anywhere.
+      So, the point that you need to remember is every class in .NET Framework is either directly or indirectly inherited from the Object class.
+      Note: Object class supports all classes in the .NET Framework class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all classes in the .NET Framework; it is the root of the 
+      type hierarchy.
+        What is the Default Parent Class in C#?
+          The Default Parent class is the Object class present in the System namespace.
+  
+    Rule5:
+      In C# we don’t have support for multiple inheritances through classes, what we are provided is only Single Inheritance through classes. That means with classes, only one immediate parent class is allowed (i.e. Single,
+      Multilevel and Hierarchical supported), and more than one immediate parent class is not allowed in C# with classes (i.e. Multiple and Hybrid are not supported). 
+
+    Rule6:
+      In Rule1 we learned whenever the child class instance is created, the child class constructor will implicitly call its parent classes constructor but if the parent classes constructor is parameterless. If the constructor of
+      the Parent class is parameterized, then the Child class constructor cannot implicitly call its Parent’s constructor. So, to overcome this problem it is the responsibility of the programmer to explicitly call the Parent
+      classes constructor from the child class constructor and pass values to those parameters. To call Parent’s constructor from the child class we need to use the base keyword.
+
+  Advantages of Inheritance in C#:
+    Code reusability: We can reuse the members of the parent class or base class in the child class or derived class. So, there is no need to re-define the members again in the child class. So, less code is required in the class
