@@ -1,0 +1,70 @@
+Abstract Class and Abstract Methods in C#
+  What are Abstract Methods in C#?
+    A method without the body is known as Abstract Method, what the method contains is only the declaration of the method. That means the abstract method contains only the declaration, no implementation. The following method is a 
+    non-abstract method as this method contains a body.
+    public void Add(int num1, int num2)
+    {
+    }
+
+    But without writing the method body, if we end the method with a semicolon as follows, then it is called an Abstract Method.
+    public void Add(int num1, int num2);
+
+    But, remember if you want to make any method an abstract method, then you should explicitly use the abstract modifier as follows. And once you use the abstract modifier, automatically the method is going to be called an 
+    abstract  method.
+    public abstract void Add(int num1, int num2);
+
+  What are Abstract Classes in C#?
+    A class under which we define abstract methods is known as an abstract class. As per object-oriented programming, we need to define a method inside a class. And, we cannot define the abstract methods directly anywhere, we need to
+    define the abstract method inside an abstract class only. Suppose, we need to write the above Add abstract method inside a class called Calculator, then that class needs to be declared using the abstract modifier as follows.
+    public abstract class Calculator
+    {
+        public abstract void Add(int num1, int num2);
+    }  
+    So, when a class contains any abstract methods, then it must and should be declared using the abstract modifier and when a class is created using an abstract modifier then it is called an Abstract class in C#. So, this is how 
+    exactly we define an abstract class and abstract methods in C#.
+    Generally, when we define an abstract class we have a doubt, without a method body what will be the use of that method? Let us understand this.
+
+  What is the use of the Abstract Method in C#?
+    If a method is declared as abstract under any class, then the child class of that abstract class is responsible for implementing the abstract method without fail.
+    In inheritance, we see that the Parent class provides some properties to the Child class for consumption. Here also inheritance comes into the picture, but the point that you need to remember is that the Parent class is an abstract
+    class, and he will not be providing any properties to the Child class for consumption, rather it imposes some restrictions on the Child classes. And children or Child classes have to be followed or fulfill those restrictions. And
+    that is the basic idea of abstract class in C#. We will come to this point later.
+    Note: Every abstract method declared within an abstract class must and should be implemented by the Child classes without fail else we will get compile time error.
+
+  Is Abstract Class Containing Only Abstract Methods in C#?
+    No, don’t think that an abstract class can contain only abstract methods. It can also contain non-abstract methods. The point that you need to remember is, that if a class is non-abstract then it contains only non-abstract methods
+    but if a class is abstract then it contains both abstract and non-abstract methods in C#.
+
+  Who will Provide Implementation of Abstract Methods in C#?
+    The Answer is Child Class. If you have a child class of an abstract class, then it is the responsibility of the child class to provide the implementation for all the abstract methods of the parent class. You cannot escape. Every
+    method should be implemented. If you implement all the abstract methods, then only you can consume the non-abstract method of the Parent class.
+
+    Generally, what we saw in Inheritance is that the child class can directly consume the members of the parent class. But here this is not possible. You cannot consume directly. The property is under restrictions. Until and unless
+    the restrictions are fulfilled by the child class, the child class cannot consume the members of the parent class.
+
+    So, the point that you need to remember is, that in the child class, you need to implement each and every abstract method of the parent class, and then only you can consume the non-abstract methods of the parent class.
+
+    Let us compare this with one real-time example. Suppose, the father promised his son, that if you bring 90% of the mark in the annual exam, then he will be rewarded with a laptop. So, the laptop is going to be given to you only if
+    you bring 90% in the annual exam. Now, if the son wants to get the laptop, then the son has to fulfill the requirement set by his father. What is the requirement, the requirement is achieving 90% of the mark. Once the son fulfills
+    the requirement i.e. once the son achieves 90% marks in the annual exam, then the laptop is given to him until then he will not get the laptop.
+
+    This is exactly the same in the case of an abstract class. Abstract class contains both abstract and non-abstract methods. You can consider the abstract method as Marks obtained on the annual exam and the non-abstract method as
+    the laptop. So, if you want to get the laptop (i.e. to consume non-abstract method), you need to fulfill the requirements i.e. get 90% marks in the annual exam (i.e. implement all the abstract methods).
+
+    Note: To define a method as abstract or class as abstract, we require to use the abstract keyword on them.
+
+  Can we create an instance of an abstract class in C#?
+    No. We cannot create an instance of an abstract class. Whether the abstract class contains any abstract methods or not, it is not possible to create an instance of the abstract class. If you try, you will get a compile-time error.
+
+  Why Abstract Class Cannot Be Instantiated in C#?
+    Because it is not a fully implemented class as its abstract methods cannot be executed. If the compiler allows us to create the object for an abstract class, we can invoke the abstract method using that object which cannot be
+    executed by CLR at runtime. Hence to restrict calling abstract methods, the compiler does not allow us to instantiate an abstract class.
+
+  Can we Create a Reference for the Abstract Class in C#?
+    Yes, we can create a reference for the abstract class in C#. But we cannot create an instance of an abstract class in C#.
+
+  Summary of Abstract Class and Abstract Methods in C#
+    1) A method that does not have a body is called an abstract method and the class that is declared by using the keyword abstract is called an abstract class. If a class contains an abstract method, then it must be declared as
+       abstract.
+    2) An abstract class can contain both abstract and non-abstract methods. If a child class of an abstract class wants to consume any non-abstract methods of its parent, should implement all abstract methods of its parent.
+    3) An abstract class is never usable to itself because we cannot create the object of an abstract class. The members of an abstract class can be consumed only by the child class of the abstract class.
