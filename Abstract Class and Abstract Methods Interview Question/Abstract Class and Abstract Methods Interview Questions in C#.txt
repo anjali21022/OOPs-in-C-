@@ -1,0 +1,89 @@
+Abstract Class and Abstract Methods Interview Questions in C#
+  What is an Abstract Class in C#?
+    A class that is declared by using the keyword abstract is called an abstract class. An abstract class is a partially implemented class used for implementing some of the methods of an object which are common for all next-level
+    subclasses i.e. all child classes and the remaining abstract methods to be implemented by the child classes. So, it contains both abstract methods and concrete methods (non-abstract methods) including variables, properties, and
+    indexers.
+    An abstract class cannot be instantiated directly. It’s compulsory to create a subclass or child class from the abstract class in order to provide the implementation of its abstract methods.
+
+  What is Abstract Method in C#?
+    A method that does not have a body is called an abstract method. It is declared with the modifier abstract. It contains only a declaration/signature and does not contain the implementation or body or definition of the method.
+    An abstract function should be terminated with a semicolon. Overriding an abstract method is compulsory.
+
+  Why should the method have an abstract keyword if it does not have a body in C#?
+    In a class, we are allowed only to define a method with the body. Since we are changing its default behavior (which means removing its body) it must have the abstract keyword in its prototype.
+
+  When Should a Class be Declared as Abstract in C#?
+    A class should be declared as abstract in C# in the following 3 cases.
+    Case1: If the class has any abstract methods, then we need to declare the class as abstract.
+    Case2: If the child does not provide implementation to any of the parent abstract methods, then again, the child class needs to be declared as an abstract class.
+    Case3: If the child class does not provide implementation to any of the methods of an interface, then the child class needs to be declared as an abstract class as well as needs to declare the method as abstract.
+
+  When to use the Abstract Method in C#?
+    Abstract methods are usually declared where two or more subclasses are expected to fulfill a similar role in a different manner. You can also do the same thing using an interface also. But if we are using an abstract class means 
+    we can provide some common functionality that is going to be the same for all the child classes and this is not possible using the interface.
+
+  What type of member can we define in an abstract class?
+    We can define all static and non-static members including properties, fields, indexes, and also abstract methods.
+
+  Will abstract class members be created when a subclass object is created?
+    Yes, its non-static members get memory when its concrete sub-class object is created.
+
+  How can we execute static and non-static concrete members of the abstract class?
+    Static members can be executed directly by using the class name and its non-static members are executed by using its concrete sub-class or child class object. 
+
+  Can we Declare an Abstract Method as Static in C#?
+    No, we are not allowed to declare an abstract method as static. It leads to Compile Time Error. If the compiler allows us to declare it as static, it can be invoked directly using the class name which cannot be executed by CLR 
+    at runtime. Hence to restrict calling abstract methods compiler does not allow us to declare an abstract method as static.
+
+  Can we Declare an Abstract Method as Sealed in C#?
+    No, because it should be allowed to override in subclasses. If we will try to use sealed then we will get a Compile Time Error. 
+
+  Can we Declare an Abstract Method as Private in C#?
+    No, because it should be inherited by subclasses. It leads to Compile Time Error: virtual or abstract members cannot be private. 
+
+  Can we Declare a Concrete Class as Abstract in C#?
+    Yes, it is allowed. We can define an abstract class with only non-abstract methods. Defining a class as abstract is a way of preventing someone from instantiating a class that is supposed to be extended first. To ensure our class
+    non-static members are only accessible via sub-class objects we should declare the concrete class as abstract. 
+
+  Difference Between Abstract Methods and Method Overriding in C#:
+    The concept of abstract methods will be nearly similar to the concept of method overriding in C#. Suppose, I have a class called A and, in this class, I have a virtual method called Display as follows.
+    public class A
+    {
+       public virtual void Display()
+       {
+       }
+    }
+    Here, the Display method is a non-abstract method i.e. virtual method and now, this virtual method can be overridden in the Child class. Let us create a child class called B which is inherited from the above parent class i,e. A.
+    Now, the child class can override the Display method of class A as follows. How we override the method by using the override modifier and this is called Re-Implementation. This is because the method is already implemented in 
+    class A and we are re-implementing it in class B.
+    public class B : A
+    {
+       public override void Display() //Optional
+       {
+           //Re-Implementation
+       }
+    }
+    Note: Re-implementing or overriding the virtual method of the parent class in the child class is optional.
+
+  Now, let us see the same example using abstract class and abstract method. Let us modify class A as follows. Here, we are declaring the class as an abstract, and the method as abstract by removing the virtual keyword as well as 
+  the method body.     
+  public abstract class A
+  {
+    public abstract void Display();
+  }
+  Now, class B inherits from class A and we already discussed that the child class has to provide the implementation for the abstract methods of its parent class. How we can provide the implementation for the abstract method in 
+  the child class is by using the same override modifier but here overriding the method is mandatory, not optional, and second thing is, it is not re-implementation, it is implemented as follows.
+  public class B : A
+  {
+    public override void Display() //Mandatory
+    {
+        //Implementation
+    }
+  }
+  Note: Implementation is mandatory in the child class because the parent class does not provide implementation, it is abstract in the parent class.
+  
+  So, the concept of abstract methods is nearly similar to the concept of method overriding. In method overriding, if the parent class contains any methods declared as virtual then those methods can be re-implemented under the child
+  class by using the override modifier, and re-implementing or overriding the method is optional. On the other hand, in the case of abstract, if at all a parent class contains any abstract methods, then those methods must be
+  implemented in the child class using the same override modifier and it is mandatory.
+  
+  
