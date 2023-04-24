@@ -1,0 +1,68 @@
+Method Overloading in C#
+  What is Method Overloading or Function Overloading in C#?
+    Method Overloading means it is an approach to defining multiple methods under the class with a single name. So, we can define more than one method with the same name in a class. 
+    But the point that you need to remember the parameters of all those methods should be different (different in terms of number, type, and order of the parameters).
+    So, if we are defining multiple methods with the same name but with a different signature in a class or in the Parent and Child Classes, then it is called Method Overloading in C#.
+    That means C#.NET not only allows method overloading in the same class but also allows method overloading in Parent and Child classes. So, we can create a method in the Derived/Child 
+    class with the same name as the method name defined in the Base/Parent class in C#.
+    In simple words, we can say that the Method Overloading in C# allows a class to have multiple methods with the same name but with a different signature. The functions or methods can 
+    be overloaded based on the number, type (int, float, etc), order, and kind (Value, Ref or Out) of parameters. For a better understanding, please have a look at the below image. All 
+    the Methods are going to be valid and based on the method call, the compiler will automatically decide which overloaded version to be invoked. 
+    The signature of a method consists of the name of the method and the data type, number, order, and kind (Value, Ref or Out) of parameters. The point that you need to keep in mind is 
+    that the signature of a method does not include the return type and the params modifiers. So it is not possible to overload a method just based on the return type and params modifier.
+
+  Why Return Type is not considered as part of Method Overloading in C#?
+    Let us understand why return type is not considered as part of method overloading with an example. Please have a look at the following image. Here, I have written two methods with the 
+    same name but one method’s return type is void, and the other method’s return type is a string. See, as soon as we create the second method, the compiler itself gives the compile time 
+    error saying Type ‘Program’ already defines a member called ‘Method’ with the same parameter types.
+    So, at the time of defining the method, only the compiler gave us an error. Now, still, you may have doubt, return types are different, then why it is going to be invalid. To   
+    understand, let us try to invoke the Method as shown in the below image. So, when we invoke the method, can you tell me which version of the Method is going to be invoked? Because we 
+    have two methods that do not take any parameter. So, here we will get the ambiguity problem and see the compiler also giving the same ambiguity error The call is ambiguous between the 
+    following methods or properties: ‘Program.Method()’ and ‘Program.Method()’ while invoking the method.
+    Still, you have doubts, the return types are different. See, the return types come into the picture at the end of the method execution. But here, the confusion is not at the end of 
+    the method execution, but the confusion is about where to start, and which method to invoke. So, the compiler does not have any clarity to start the method execution, and talking 
+    about the end of the method execution does not make any sense. So, this is the reason why return type is never taken into consideration while defining method overloading in C#.
+
+  When should we Overload Methods in C#?
+    We have understood what is Method Overloading and how to implement the Method Overloading in C#. But, the important question is when we need to implement or when we need to go for
+    Method Overloading in C#. Let us understand this with an example.
+    The concept of Method Overloading falls under the Polymorphisms OOPs principle. Object Oriented Programming is based on four principles i.e. Encapsulation, Abstraction, Inheritance, 
+    and Polymorphism.
+    What is Polymorphism? Polymorphism is a mechanism of changing the behavior based on the inputs. That means when the input changes, automatically the output or behavior changes. 
+    The best example of polymorphism is ourselves. For example, when we hear something interesting or something which is good for us, we feel happy. And when we hear something which is
+    not good for us, we feel sad. Suppose, you asked your father to purchase a bike, and if your father purchases a bike for you then you will feel happy. And if your father says that I
+    am not going to purchase a bike for you, then you will feel sad. So, you are the same person, when you received something good, you feel happy and when you receive something which is 
+    not good, you feel sad. This is called polymorphism. Behaving in different ways based on the input received i.e. whenever the input changes the output automatically changes.
+    Here, the input changes mean don’t think that the values changes.Input changes mean when we change the number, type, and order of input the values are going to be changed.Don’t think
+    that, if I pass 10, I will get a value, if I pass 20, I will get a different value. For this, if else condition is sufficient, overloading is not required. When you expect the output 
+    to be changed based on the number, type, and order of inputs, then only you need to go for Method overloading in C#.
+
+  When is a method considered an overloaded method in C#?
+    If two methods have the same method name but with different signatures, then those methods are considered overloaded methods. Then the rule we should check is both methods must have
+    different parameter Types/Numbers/Orders. But there is no rule on return type, access specifier and access modifier means overloading methods can have their own return type (void, 
+    float, int, string, etc), own access specifier (public, private, protected, etc.), and access modifier (sealed, static, virtual, etc.) because overloading methods are different 
+    methods.
+
+  Can we Overload Methods in the Same Class?
+    Yes, it is possible. No Compile Time Error, and No Runtime Error. Methods can be overloaded in the same or in super and sub classes because overloaded methods are different methods. 
+    But we can’t override a method in the same class it leads to Compile Time Error: “Method is Already Defined” because overriding methods are the same methods with a different 
+    implementation.
+
+  What is Inheritance-Based Method Overloading in C#?
+    A method that is defined in the parent class can also be overloaded under its child class. It is called Inheritance Based Method Overloading in C#.
+
+  Real-Time Scenario where you Can use Method Overloading in C#
+    Suppose you are working on a maintenance project. And you are going to work on a class where already some parameterized constructors have been defined and you need to pass some 
+    additional parameters. So what you will do, whether you will add the required parameter with one of the already defined constructors or add a new constructor as per your requirement? 
+    In such cases, you should not add the required parameter with the already defined constructor because this may disturb your other class dependency structure. So what you will do is 
+    create a new constructor with the required parameter. That new constructor that you are creating is nothing but the Constructor Overloading in C#.
+
+  
+
+
+
+
+  
+
+
+
